@@ -4,7 +4,7 @@ pipeline {
         stage('CHECKOUT') {
             steps {
                 script {
-                    checkout([$class: 'GitSCM', branches: [[name: '$BRANCH_NAME']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/krzysztof-palubicki/aplikacja_kalkulator.git/']]])
+                    checkout([$class: 'GitSCM', branches: [[name: '$BRANCH_NAME']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/krzysztof-palubicki/aplikacja_kalkulator_tdd/']]])
                 }
             }
         } //end of stage CHECKOUT
@@ -12,7 +12,7 @@ pipeline {
         stage('MAIN TEST') {
             parallel {
                 stage ('Test funk 1') {
-                agent { label 'moj_node'}
+                agent { label 'nodzik'}
                     steps {
                         script {
                             sh "echo ${env.NODE_NAME}"
@@ -46,7 +46,6 @@ pipeline {
                    deleteDir()
                 }
             }
-        } //end of stage CLEANUP
-        
-} //end of stages
+        } //end of stage CLEANUP    
+    } //end of stages
 } //end of pipeline
