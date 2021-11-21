@@ -18,24 +18,24 @@ pipeline {
                             sh "echo ${env.NODE_NAME}"
                             sh 'python3.8 -m pytest test_*.py --html=report.html'
                                         }
-                }
-            }
-                stage ('Test funk 2') {
-                agent { label 'master'}
-                     steps {
-                        script { 
-                            sh "echo ${env.NODE_NAME}"
-                            sh 'python3.8 -m pytest test_*.py --html=report.html'
+                        }
+                    }
+                    stage ('Test funk 2') {
+                    agent { label 'master'}
+                        steps {
+                            script { 
+                                sh "echo ${env.NODE_NAME}"
+                                sh 'python3.8 -m pytest test_*.py --html=report.html'
                                             }
-                }
-            }
-            stage ('Test funk 3') {
-                steps {
-                    script {
-                        sh 'python3.8 -m pytest test_*.py --html=report.html'
+                        }
+                    }
+                    stage ('Test funk 3') {
+                        steps {
+                            script {
+                                sh 'python3.8 -m pytest test_*.py --html=report.html'
                                             }
-                }
-            }
+                         }
+                    }
             } //end of parallel
         } //end of stage MAIN TEST
         
